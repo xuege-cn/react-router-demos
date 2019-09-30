@@ -1,13 +1,18 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
-import Dashboard from './router/dashboard'
-import Home from './router/home/index'
+import { Switch, Route, Link } from 'react-router-dom'
+// import Dashboard from './router/dashboard'
+// import Home from './router/home/index'
+import Suspense from './suspense'
+import lazy from './lazy'
+
+const Dashboard = lazy(() => import('./router/dashboard'))
+const Home = lazy(() => import('./router/home'))
 
 function App() {
   return (
     <React.Fragment>
-        <Router>
-          <div style={{width: 200, float: 'left', listStyle: 'none'}}>
+      <Suspense fallback={<div>loading</div>}>
+        <div style={{width: 200, float: 'left', listStyle: 'none'}}>
             <h3>菜单</h3>
             <ul style={{listStyle: 'none'}}>
               <li>
@@ -26,15 +31,12 @@ function App() {
               <Route path="/home">
                 <Home />
               </Route>
-              <Route path="/" exact>
+              <Route path="/">
                 <Dashboard />
-              </Route>
-              <Route>
-                <div>404</div>
               </Route>
             </Switch>
         </div>
-        </Router>
+      </Suspense>
     </React.Fragment>
   );
 }

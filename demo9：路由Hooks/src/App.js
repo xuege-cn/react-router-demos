@@ -14,7 +14,7 @@ function App() {
                 <Link to="/dashboard">dashboard</Link>
               </li>
               <li>
-                <Link to="/home">home</Link>
+                <Link to="/home/1">home</Link>
               </li>
             </ul>
           </div>
@@ -23,7 +23,7 @@ function App() {
               <Route path="/dashboard">
                 <Dashboard />
               </Route>
-              <Route path="/home">
+              <Route path="/home/:id">
                 <Home />
               </Route>
               <Route path="/" exact>

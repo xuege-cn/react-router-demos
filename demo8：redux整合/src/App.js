@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import Dashboard from './router/dashboard'
 import Home from './router/home/index'
 
-function App() {
+function App(props) {
   return (
     <React.Fragment>
         <Router>
